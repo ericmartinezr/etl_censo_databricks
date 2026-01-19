@@ -1,4 +1,3 @@
-# This pipeline triggers every time you push to 'main' in GitHub
 trigger:
   branches:
     include:
@@ -8,19 +7,19 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  - group: databricks-prod-secrets 
+  - group: databricks-prod-secrets
 
 steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.12'
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.12'
 
-- script: |
-    # 1. Install Databricks CLI
-    curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
-    
-    databricks bundle deploy -t prod
-  env:
-    DATABRICKS_HOST: $(DATABRICKS_HOST)
-    DATABRICKS_TOKEN: $(DATABRICKS_TOKEN)
-  displayName: 'Despliegue pipeline ETL Censo a Databricks'
+  - script: |
+      # 1. Install Databricks CLI
+      curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+
+      databricks bundle deploy -t prod
+    env:
+      DATABRICKS_HOST: $(DATABRICKS_HOST)
+      DATABRICKS_TOKEN: $(DATABRICKS_TOKEN)
+    displayName: 'Despliegue pipeline ETL Censo a Databricks'
