@@ -17,8 +17,6 @@ steps:
     # 1. Install Databricks CLI
     curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
     
-    # 2. Deploy the Bundle (Notebooks + ETL Job)
-    # The 'prod' target is defined in your databricks.yml
     databricks bundle deploy -t prod
   env:
     DATABRICKS_HOST: $(DATABRICKS_HOST)

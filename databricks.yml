@@ -1,0 +1,11 @@
+bundle:
+  name: censo-etl
+
+include:
+  - resources/*.yml 
+
+targets:
+  prod:
+    workspace:
+      host: https://adb-7405606207367826.6.azuredatabricks.net
+    mode: production
