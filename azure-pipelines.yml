@@ -11,7 +11,7 @@ variables:
 steps:
 - task: UsePythonVersion@0
   inputs:
-    versionSpec: '3.x'
+    versionSpec: '3.12'
 
 - script: |
     # 1. Install Databricks CLI
