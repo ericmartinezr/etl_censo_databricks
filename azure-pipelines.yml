@@ -1,0 +1,26 @@
+# This pipeline triggers every time you push to 'main' in GitHub
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  - group: databricks-prod-secrets 
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+
+- script: |
+    # 1. Install Databricks CLI
+    curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+    
+    # 2. Deploy the Bundle (Notebooks + ETL Job)
+    # The 'prod' target is defined in your databricks.yml
+    databricks bundle deploy -t prod
+  env:
+    DATABRICKS_HOST: $(DATABRICKS_HOST)
+    DATABRICKS_TOKEN: $(DATABRICKS_TOKEN)
+  displayName: 'Despliegue pipeline ETL Censo a Databricks'
