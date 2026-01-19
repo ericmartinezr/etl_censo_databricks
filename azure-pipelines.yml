@@ -15,9 +15,7 @@ steps:
       versionSpec: '3.12'
 
   - script: |
-      # 1. Install Databricks CLI
       curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
-
       databricks bundle deploy -t prod
     env:
       DATABRICKS_HOST: $(DATABRICKS_HOST)
