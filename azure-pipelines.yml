@@ -1,6 +1,8 @@
 # This pipeline triggers every time you push to 'main' in GitHub
 trigger:
-  - main
+  branches:
+    include:
+      - master
 
 pool:
   vmImage: 'ubuntu-latest'
