@@ -1,6 +1,11 @@
 bundle:
   name: censo-etl
 
+trigger:
+  branches:
+    include:
+      - master
+
 include:
   - resources/*.yml 
 
