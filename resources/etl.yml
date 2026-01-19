@@ -2,10 +2,6 @@ resources:
   jobs:
     ETL_Censo:
       name: ETL_Censo
-      email_notifications:
-        on_failure:
-          - ***REMOVED***
-        no_alert_for_skipped_runs: true
       notification_settings:
         no_alert_for_skipped_runs: true
         no_alert_for_canceled_runs: true
@@ -38,9 +34,9 @@ resources:
       environments:
         - environment_key: Default
           spec:
-            environment_version: "4"
+            environment_version: '4'
       performance_target: PERFORMANCE_OPTIMIZED
 
 variables:
   notebook_path:
-    default: "/Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}/files/notebooks"
+    default: '/Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}/files/notebooks'
