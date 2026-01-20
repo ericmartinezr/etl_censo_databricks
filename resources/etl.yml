@@ -6,7 +6,13 @@ resources:
         no_alert_for_skipped_runs: true
         no_alert_for_canceled_runs: true
       tasks:
+        - task_key: Unit_Test
+          notebook_task:
+            notebook_path: ${var.notebook_path}/00_Unit_Test
+            source: WORKSPACE
         - task_key: Create_Tables
+          depends_on:
+            - task_key: Unit_Test
           notebook_task:
             notebook_path: ${var.notebook_path}/01_Create_Tables
             source: WORKSPACE
